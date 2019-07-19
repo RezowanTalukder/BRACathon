@@ -3,7 +3,7 @@ function initMap() {
       info:
         '<strong>Chipotle on Broadway</strong><br>\
           5224 N Broadway St<br> Chicago, IL 60640<br>\
-          <a href="https://goo.gl/maps/jKNEDz4SyyH2"><b>Get Directions</b></a>',
+          <a href="bonogram.html">VO Details</a>',
       lat: 23.1397,
       long: 90.394,
     }
@@ -12,7 +12,7 @@ function initMap() {
       info:
         '<strong>Chipotle on Belmont</strong><br>\
           1025 W Belmont Ave<br> Chicago, IL 60657<br>\
-          <a href="https://goo.gl/maps/PHfsWTvgKa92">Get Directions</a>',
+          <a href="bonogram.html">VO Details</a>',
           lat: 23.0397,
           long: 90.594,
     }
@@ -21,7 +21,7 @@ function initMap() {
       info:
         '<strong>Mirpur Branch 3</strong><br>\r\
           Md Tanvir Rahman<br> Money Collector<br>Performance: 90%<br>\
-          <a href="bonogram.html">Get Directions</a>',
+          <a href="bonogram.html">VO Details</a>',
           lat: 23.1397,
           long: 90.594,
     }
@@ -30,16 +30,16 @@ function initMap() {
       info:
         '<strong>Chipotle on Broadway</strong><br>\
           5224 N Broadway St<br> Chicago, IL 60640<br>\
-          <a href="https://goo.gl/maps/jKNEDz4SyyH2"><b>Get Directions</b></a>',
-      lat: 23.3397,
-      long: 90.194,
+          <a href="bonogram.html">VO Details</a>', 
+          lat: 23.3397,
+          long: 90.194,
     }
   
     var belmont2 = {
       info:
         '<strong>Chipotle on Belmont</strong><br>\
           1025 W Belmont Ave<br> Chicago, IL 60657<br>\
-          <a href="https://goo.gl/maps/PHfsWTvgKa92">Get Directions</a>',
+          <a href="bonogram.html">VO Details</a>',
           lat: 23.0197,
           long: 90.494,
     }
@@ -48,10 +48,18 @@ function initMap() {
       info:
         '<strong>Mirpur Branch 3</strong><br>\r\
           Md Tanvir Rahman<br> Money Collector<br>Performance: 90%<br>\
-          <a href="bonogram.html">Get Directions</a>',
+          <a href="bonogram.html">VO Details</a>',
           lat: 23.1697,
           long: 90.5194,
     }
+
+
+    var green_icon = {
+    url: 'icon.png', // url
+    scaledSize: new google.maps.Size(60, 60), // scaled size
+    origin: new google.maps.Point(0,0), // origin
+    anchor: new google.maps.Point(0, 0) // anchor
+    };
 
   
     var locations = [
@@ -67,18 +75,30 @@ function initMap() {
       zoom: 10,
       center: new google.maps.LatLng(23.1397, 90.594),
       mapTypeId: google.maps.MapTypeId.ROADMAP,
-      icon:'icon.png'
+      icon:green_icon
     })
+
+    
   
     var infowindow = new google.maps.InfoWindow({})
   
     var marker, i
   
-    for (i = 0; i < locations.length; i++) {
-      marker = new google.maps.Marker({
+   
+
+      for (i = 0; i < locations.length; i++) {
+
+        if(i%2){
+
+          marker = new google.maps.Marker({
         position: new google.maps.LatLng(locations[i][1], locations[i][2]),
         map: map,
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        icon: green_icon,
+
       })
+
+
   
       google.maps.event.addListener(
         marker,
@@ -90,5 +110,32 @@ function initMap() {
           }
         })(marker, i)
       )
+
+        }
+        else{
+
+          marker = new google.maps.Marker({
+        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+        map: map,
+        
+
+      })
+
+
+  
+      google.maps.event.addListener(
+        marker,
+        'click',
+        (function(marker, i) {
+          return function() {
+            infowindow.setContent(locations[i][0])
+            infowindow.open(map, marker)
+          }
+        })(marker, i)
+      )
+
+        }
+
+      
     }
   }
