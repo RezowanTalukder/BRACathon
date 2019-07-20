@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <link rel="icon" href="img/brac_logo.png">
-  <title>Today</title>
+  <title>Bonogram</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -18,7 +18,7 @@
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
-
+<!-- // line diagram -->
   <script>
 window.onload = function () {
 
@@ -28,28 +28,56 @@ var chart = new CanvasJS.Chart("chartContainer", {
   title:{
     text: "Inclusion Chart at a glance"
   },
+  axisX:{
+        title: "Year",
+        valueFormatString:  "###0.##"   // move comma to change formatting
+     },
   axisY:{
     includeZero: false
   },
-  data: [{        
+  data: [{
+    
     type: "line",       
     dataPoints: [
-      { y: 12 },
-      { y: 17},
-      { y: 20 },
-      { y: 27},
-      { y: 30 },
-      { y: 31 },
-      { y: 33},
-      { y: 36 },
-      { y: 40  },
-      { y: 46 },
-      { y: 49 },
-      { y: 51 }
+      { x:1974,y: 2 },
+      { x:1979,y: 3},
+      { x:1984,y: 9 },
+      { x:1989,y: 11},
+      { x:1994,y: 15.5 },
+      { x:1999,y: 17 },
+      { x:2004,y: 23 },
+      { x:2009,y: 25 },
+      { x:2014,y: 29 },
+      { x:2019,y: 31 }
+      
     ]
   }]
 });
 chart.render();
+
+var ringChart = new CanvasJS.Chart("chartContainer2", {
+  animationEnabled: true,
+  theme: "light2",
+  title:{
+    text: "Contribution in National Inclusion",
+    horizontalAlign: "text-center"
+  },
+  data: [{
+    type: "doughnut",
+    startAngle: 90,
+    //innerRadius: 60,
+    indexLabelFontSize: 17,
+    indexLabel: "{label} - #percent%",
+    toolTipContent: "<b>{label}:</b> {y} (#percent%)",
+    dataPoints: [
+      { y: 40, label: "Brac's Contribution" },
+      { y: 60, label: "Other org's Contribution" }
+      
+    ]
+  }]
+});
+ringChart.render();
+
 
 }
 </script>
@@ -115,9 +143,9 @@ chart.render();
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Types of Peoples Hare</h6>
-            <a class="collapse-item" href="emp_rank.html">Executive officers</a>
-            <a class="collapse-item" href="emp_rank.html">Employees</a>
+            <h6 class="collapse-header">Types of Employees Here</h6>
+            <a class="collapse-item" href="emp_rank.html">Program Organizers</a>
+            <a class="collapse-item" href="emp_rank.html">Other Employees</a>
           </div>
         </div>
       </li>
@@ -372,7 +400,7 @@ chart.render();
             
 
             <div class="d-sm-flex align-items-center justify-content-between mb-4">
-              <h1 class="h3 mb-0 text-gray-800">Bono Gram, Mirpur-11</h1>
+              <h1 class="h3 mb-0 text-gray-800 text-success">Bono Gram, Mirpur-11</h1>
               
             </div>
             
@@ -390,8 +418,8 @@ chart.render();
                   <div class="card-body">
                     <div class="row no-gutters align-items-center">
                       <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Extimated Potential Client</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">3623</div>
+                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Total Member</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">5623</div>
                       </div>
                       <div class="col-auto">
                         <i class="fas fa-female fa-2x text-gray-300"></i>
@@ -407,7 +435,7 @@ chart.render();
                   <div class="card-body">
                     <div class="row no-gutters align-items-center">
                       <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Inclusion</div>
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">National Inclusion</div>
                         <div class="h5 mb-0 font-weight-bold text-gray-800">25%</div>
                       </div>
                       <div class="col-auto">
@@ -424,8 +452,8 @@ chart.render();
                   <div class="card-body">
                     <div class="row no-gutters align-items-center">
                       <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Loan</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">73%</div>
+                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Taking Loan</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">1350</div>
                       </div>
                       <div class="col-auto">
                         <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -441,10 +469,10 @@ chart.render();
                   <div class="card-body">
                     <div class="row no-gutters align-items-center">
                       <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">DPS</div>
+                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Deposit</div>
                         <div class="row no-gutters align-items-center">
                           <div class="col-auto">
-                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">26%</div>
+                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">400</div>
                           </div>
                           <div class="col">
                             
@@ -463,24 +491,137 @@ chart.render();
               
             </div>
 
+            <div class="row">
+
+
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-warning shadow h-100 py-2">
+                  <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Extimated Potential Client</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">3523</div>
+                      </div>
+                      <div class="col-auto">
+                        <i class="fas fa-female fa-2x text-gray-300"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+  
+              <!-- Earnings (Monthly) Card Example -->
+              <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-primary shadow h-100 py-2">
+                  <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Brac's Inclusion</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">5%</div>
+                      </div>
+                      <div class="col-auto">
+                        <i class="fas fa-feather fa-2x text-gray-300"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+  
+              <!-- Earnings (Monthly) Card Example -->
+              <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-success shadow h-100 py-2">
+                  <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Taking Loan</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">730</div>
+                      </div>
+                      <div class="col-auto">
+                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+  
+              <!-- Earnings (Monthly) Card Example -->
+              <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-info shadow h-100 py-2">
+                  <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Deposit</div>
+                        <div class="row no-gutters align-items-center">
+                          <div class="col-auto">
+                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">125</div>
+                          </div>
+                          <div class="col">
+                            
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-auto">
+                        <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+  
+              <!-- Pending Requests Card Example -->
+              
+            </div>
+
+
       <div class="row">
         <div class="container-fluid">
 
-          <div class="card-body" style="height: 370px; width: 600px;">
+          <div class="card-body" style="height: 370px; width: 800px;">
                 <div id="chartContainer" ></div>
                 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
                           
           </div>
-    
-
-          
-
          
        </div>
-
-
-     
       
+      </div>
+      <br><br><br><br><br>
+      <div class="row">
+        <div class="container-fluid">
+
+         <div id="chartContainer2" style="height: 300px; width: 100%;"></div>
+          <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+          <!-- <div class="card-body" style="height: 370px; width: 800px;">
+                <div id="chartContainer" ></div>
+                <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+           -->                
+          </div>
+         
+       </div> 
+       <!-- Project Card Example -->
+                <div class="card shadow mb-4">
+                  <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">VO Performance Measurement</h6>
+                  </div>
+                  <div class="card-body">
+                    <h4 class="small font-weight-bold">Normalized Risk Factor <h6>(overdue/outstanding)</h6> <span class="float-right">70%</span></h4>
+                    <div class="progress mb-4">
+                      <div class="progress-bar " role="progressbar" style="width: 70%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <h4 class="small font-weight-bold">Increasing Borrowers<h6>(number of new annual borrower/total potential member )</h6> <span class="float-right">40%</span></h4>
+                    <div class="progress mb-4">
+                      <div class="progress-bar badge-warning" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <h4 class="small font-weight-bold">Amount of Disbursement<span class="float-right">60%</span></h4>
+                    <div class="progress mb-4">
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    
+                    
+                    
+                  </div>
+                </div>
 
       
       </div>
